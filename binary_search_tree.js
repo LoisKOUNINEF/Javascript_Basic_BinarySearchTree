@@ -60,82 +60,86 @@ class BinarySearchTree
     }
     else
     {
-     if(node.left === null && node.right === null)
-     {
-      node = null;
+      if(node.left === null && node.right === null)
+      {
+        node = null;
+        return node;
+      }
+      if(node.left === null)
+      {
+        node = node.right;
+        return node;
+      }
+      else if(node.right === null)
+      {
+        node = node.left;
+        return node;
+      }
+      var aux = this.findMinNode(node.right);
+      node.data = aux.data;
+
+      node.right = this.removeNode(node.right, aux.data);
       return node;
     }
+  }
+
+  findMinNode(node)
+  {
     if(node.left === null)
-    {
-      node = node.right;
       return node;
-    }
-    else if(node.right === null)
+    else
+      return this.findMinNode(node.left);
+  }
+  getRootNode()
+  {
+    return this.root;
+  }
+  inorder(node)
+  {
+    if(node !== null)
     {
-      node = node.left;
-      return node;
+      this.inorder(node.left);
+      console.log(node.data);
+      this.inorder(node.right);
     }
-    var aux = this.findMinNode(node.right);
-    node.data = aux.data;
-
-    node.right = this.removeNode(node.right, aux.data);
-    return node;
   }
-
-}
-
-findMinNode(node)
-{
-  if(node.left === null)
-    return node;
-  else
-    return this.findMinNode(node.left);
-}
-getRootNode()
-{
-  return this.root;
-}
-inorder(node)
-{
-  if(node !== null)
+  preorder(node)
   {
-    this.inorder(node.left);
-    console.log(node.data);
-    this.inorder(node.right);
+    if(node !== null)
+    {
+      console.log(node.data);
+      this.preorder(node.left);
+      this.preorder(node.right);
+    }
   }
-}
-preorder(node)
-{
-  if(node !== null)
+  postorder(node)
   {
-    console.log(node.data);
-    this.preorder(node.left);
-    this.preorder(node.right);
+    if(node !== null)
+    {
+      this.postorder(node.left);
+      this.postorder(node.right);
+      console.log(node.data);
+    }
   }
-}
-postorder(node)
-{
-  if(node !== null)
+  search(node, data)
   {
-    this.postorder(node.left);
-    this.postorder(node.right);
-    console.log(node.data);
+    if(node === null)
+      return null;
+    else if(data < node.data)
+      return this.search(node.left, data);
+    else if(data > node.data)
+      return this.search(node.right, data);
+    else
+      return node;
   }
-}
-search(node, data)
-{
- if(node === null)
-  return null;
-else if(data < node.data)
-  return this.search(node.left, data);
-else if(data > node.data)
-  return this.search(node.right, data);
-else
-  return node;
-}
 }
 
 //
+// stole it from https://medium.com/@johnathonwood/leetcodes-construct-string-from-binary-tree-question-explained-javascript-solution-742395d9cfe9
+// currently unable to make it display my tree though :(
+
+// will look into it with
+// https://stackoverflow.com/questions/43898440/how-to-draw-a-binary-tree-in-console
 var toString = function(t) {
   if(!t) return '';
   const left = toString(t.left);
@@ -146,47 +150,3 @@ var toString = function(t) {
   else return `${t.val}`;
 }
 
-
-//
-//
-var BST = new BinarySearchTree();
-
-BST.insert(15);
-BST.insert(25);
-BST.insert(10);
-BST.insert(7);
-BST.insert(22);
-BST.insert(17);
-BST.insert(13);
-BST.insert(5);
-BST.insert(9);
-BST.insert(27);
-
-var root = BST.getRootNode();
-
-BST.inorder(root);
-
-BST.remove(5);
-
-var root = BST.getRootNode();
-
-BST.inorder(root);
-
-BST.remove(7);
-
-var root = BST.getRootNode();
-
-BST.inorder(root);
-
-BST.remove(15);
-
-var root = BST.getRootNode();
-
-console.log("inorder traversal");
-
-BST.inorder(root);
-
-console.log("postorder traversal");
-BST.postorder(root);
-console.log("preorder traversal");
-BST.preorder(root);

@@ -6,7 +6,7 @@
 </br></br>
 
 
-Please refer to those tutorials for a deeper explanation on binary search trees and how to implement them in JavaScript.
+Please refer to those tutorials for a deeper explanation on binary search trees and how to implement them in JavaScript :
 
-https://www.geeksforgeeks.org/implementation-binary-search-tree-javascript/
-https://www.freecodecamp.org/news/binary-tree-algorithms-for-javascript-beginners/
+<a href="https://www.geeksforgeeks.org/implementation-binary-search-tree-javascript/">Geeks For Geeks BST tutorial</a>
+<a href="https://www.freecodecamp.org/news/binary-tree-algorithms-for-javascript-beginners/">FreeCodeCamp BST tutorial</a>
