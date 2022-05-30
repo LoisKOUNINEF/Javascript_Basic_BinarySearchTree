@@ -10,3 +10,4 @@ Please refer to those tutorials for a deeper explanation on binary search trees 
 
 <a href="https://www.geeksforgeeks.org/implementation-binary-search-tree-javascript/">Geeks For Geeks BST tutorial</a>
 <a href="https://www.freecodecamp.org/news/binary-tree-algorithms-for-javascript-beginners/">FreeCodeCamp BST tutorial</a>
+<a href="https://www.geeksforgeeks.org/how-to-handle-duplicates-in-binary-search-tree/">How to handle duplicates</a>

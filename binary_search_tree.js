@@ -25,7 +25,11 @@ class BinarySearchTree
   }
   insertNode(node, newNode)
   {
-    if(newNode.data < node.data)
+    if (newNode.data === node.data)
+    {
+      node.count++;
+    }
+    else if(newNode.data < node.data)
     {
       if(node.left === null)
         node.left = newNode;
@@ -150,3 +154,47 @@ var toString = function(t) {
   else return `${t.val}`;
 }
 
+
+//
+//
+var BST = new BinarySearchTree();
+
+BST.insert(15);
+BST.insert(25);
+BST.insert(10);
+BST.insert(7);
+BST.insert(22);
+BST.insert(17);
+BST.insert(13);
+BST.insert(5);
+BST.insert(9);
+BST.insert(27);
+
+var root = BST.getRootNode();
+
+BST.inorder(root);
+
+BST.remove(5);
+
+var root = BST.getRootNode();
+
+BST.inorder(root);
+
+BST.remove(7);
+
+var root = BST.getRootNode();
+
+BST.inorder(root);
+
+BST.remove(15);
+
+var root = BST.getRootNode();
+
+console.log("inorder traversal");
+
+BST.inorder(root);
+
+console.log("postorder traversal");
+BST.postorder(root);
+console.log("preorder traversal");
+BST.preorder(root);
